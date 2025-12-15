@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3l3i5fah42d0"]
+
+[ext_resource type="Script" uid="uid://cfmai28x6aen6" path="res://game.gd" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://bbhtcophbiqus" path="res://assets/player.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://c47wkghqo5dtm" path="res://assets/wall.tscn" id="3_7jktm"]
+[ext_resource type="PackedScene" uid="uid://bu2bsa28oyw6a" path="res://assets/ceiling.tscn" id="3_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://b7fv1y4dq8sqd" path="res://assets/ball.tscn" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://b7ejliwrxrgvq" path="res://components/screen_clamp_component.tscn" id="6_ryrav"]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_80nbo")
+player = NodePath("Player")
+
+[node name="Player" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(307, 452)
+
+[node name="Ball" parent="." instance=ExtResource("3_feb5d")]
+position = Vector2(343, 113)
+wall_min_slide_angle = 0.0
+
+[node name="wall_top" parent="." instance=ExtResource("3_fc0e3")]
+
+[node name="wall_left" parent="." instance=ExtResource("3_7jktm")]
+position = Vector2(13, 13)
+
+[node name="wall_right" parent="." instance=ExtResource("3_7jktm")]
+position = Vector2(961, 13)
+
+[node name="ScreenClampComponent" parent="." node_paths=PackedStringArray("node") instance=ExtResource("6_ryrav")]
+node = NodePath("../Player")
+margin = 44
