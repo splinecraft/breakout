@@ -15,6 +15,9 @@ func _physics_process(delta: float) -> void:
 		var collider = get_last_slide_collision().get_collider()
 		if collider.is_in_group("Player") or collider.is_in_group("Ceiling"):			
 			velocity.y = -velocity.y
+		elif collider.is_in_group("Brick"):
+			velocity.y = -velocity.y
+			collider.queue_free()
 		elif collider.is_in_group("Wall"):		
 			velocity.x = -velocity.x
 		
