@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://qpt2try4e46a" path="res://assets/ceiling.gd" id="1_sgyqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
-size = Vector2(960, 14)
+size = Vector2(960, 12)
 
 [node name="wall_top" type="StaticBody2D" groups=["Ceiling"]]
 script = ExtResource("1_sgyqx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 960.0
-offset_bottom = 13.0
+offset_bottom = 12.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(480, 6)

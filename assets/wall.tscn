@@ -3,16 +3,16 @@
 [ext_resource type="Script" uid="uid://ce8vdpukb1h0v" path="res://assets/wall.gd" id="1_jj4ce"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
-size = Vector2(540, 13.00001)
+size = Vector2(540, 11.999999)
 
 [node name="wall_left" type="StaticBody2D" groups=["Wall"]]
 rotation = 1.5707964
 script = ExtResource("1_jj4ce")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 540.0594
-offset_bottom = 13.0
+offset_right = 540.0
+offset_bottom = 12.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(270, 6.4999943)
+position = Vector2(270, 5.999989)
 shape = SubResource("RectangleShape2D_feb5d")
