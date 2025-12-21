@@ -15,17 +15,21 @@ player = NodePath("Player")
 position = Vector2(307, 452)
 
 [node name="Ball" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(343, 113)
+position = Vector2(223, 333)
 wall_min_slide_angle = 0.0
 
 [node name="wall_top" parent="." instance=ExtResource("3_fc0e3")]
 
 [node name="wall_left" parent="." instance=ExtResource("3_7jktm")]
-position = Vector2(13, 13)
+position = Vector2(12, 12)
 
 [node name="wall_right" parent="." instance=ExtResource("3_7jktm")]
-position = Vector2(961, 13)
+position = Vector2(960, 12)
 
 [node name="ScreenClampComponent" parent="." node_paths=PackedStringArray("node") instance=ExtResource("6_ryrav")]
 node = NodePath("../Player")
 margin = 44
+
+[node name="test_marker" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(15, 28)

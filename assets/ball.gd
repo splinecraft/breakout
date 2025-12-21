@@ -21,6 +21,9 @@ func _physics_process(delta: float) -> void:
 			velocity = velocity.normalized() * speed
 		elif collider.is_in_group("Ceiling"):
 			velocity.y = -velocity.y
+		elif collider.is_in_group("Brick"):
+			velocity.y = -velocity.y
+			collider.queue_free()
 		elif collider.is_in_group("Wall"):		
 			velocity.x = -velocity.x
 		
