@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var current_speed_modifier = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,8 +23,15 @@ func _physics_process(delta: float) -> void:
 		elif collider.is_in_group("Ceiling"):
 			velocity.y = -velocity.y
 		elif collider.is_in_group("Brick"):
-			velocity.y = -velocity.y
-			collider.queue_free()
+			_brick_collision(collider)
 		elif collider.is_in_group("Wall"):		
 			velocity.x = -velocity.x
 		
+
+func _brick_collision(collider) -> void:
+	velocity.y = -velocity.y
+	var collider_speed_modifier = collider.speed_modifier
+	if collider_speed_modifier > current_speed_modifier:
+		velocity *= collider.speed_modifier
+		current_speed_modifier = collider_speed_modifier
+	collider.queue_free()
