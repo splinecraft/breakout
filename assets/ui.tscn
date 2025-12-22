@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://wsuqh6nxst1j"]
+
+[ext_resource type="Script" uid="uid://lrtnxei0nkf5" path="res://assets/ui.gd" id="1_etwi0"]
+
+[sub_resource type="SystemFont" id="SystemFont_pnrih"]
+
+[sub_resource type="Theme" id="Theme_etwi0"]
+default_font = SubResource("SystemFont_pnrih")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 5
+Label/font_sizes/font_size = 35
+RichTextLabel/font_sizes/normal_font_size = 50
+RichTextLabel/fonts/normal_font = SubResource("SystemFont_pnrih")
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_etwi0")
+script = ExtResource("1_etwi0")
+
+[node name="ScoreLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 17.0
+offset_top = 468.0
+offset_right = 74.0
+offset_bottom = 537.0
+text = "00"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BallsRemaining" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 883.0
+offset_top = 468.0
+offset_right = 940.0
+offset_bottom = 537.0
+text = "03"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReadyLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 182.0
+offset_right = 571.0
+offset_bottom = 231.0
+text = "Get Ready!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ball" type="ColorRect" parent="ReadyLabel"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 64.0
+offset_right = 96.0
+offset_bottom = 76.0

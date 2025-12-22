@@ -1,22 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3l3i5fah42d0"]
+[gd_scene load_steps=8 format=3 uid="uid://d3l3i5fah42d0"]
 
 [ext_resource type="Script" uid="uid://cfmai28x6aen6" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://bbhtcophbiqus" path="res://assets/player.tscn" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://c47wkghqo5dtm" path="res://assets/wall.tscn" id="3_7jktm"]
 [ext_resource type="PackedScene" uid="uid://bu2bsa28oyw6a" path="res://assets/ceiling.tscn" id="3_fc0e3"]
-[ext_resource type="PackedScene" uid="uid://b7fv1y4dq8sqd" path="res://assets/ball.tscn" id="3_feb5d"]
 [ext_resource type="PackedScene" uid="uid://b7ejliwrxrgvq" path="res://components/screen_clamp_component.tscn" id="6_ryrav"]
+[ext_resource type="PackedScene" uid="uid://wsuqh6nxst1j" path="res://assets/ui.tscn" id="7_eow3j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryrav"]
+size = Vector2(935, 34)
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_80nbo")
 player = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(307, 452)
-
-[node name="Ball" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(223, 333)
-wall_min_slide_angle = 0.0
+position = Vector2(481, 452)
 
 [node name="wall_top" parent="." instance=ExtResource("3_fc0e3")]
 
@@ -30,6 +29,25 @@ position = Vector2(960, 12)
 node = NodePath("../Player")
 margin = 44
 
-[node name="test_marker" type="Marker2D" parent="."]
+[node name="brick_spawn_start" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(15, 28)
+position = Vector2(15, 65)
+
+[node name="AreaBounds" type="Area2D" parent="."]
+position = Vector2(490, 549)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBounds"]
+position = Vector2(-10.5, 7)
+shape = SubResource("RectangleShape2D_ryrav")
+
+[node name="UI" parent="." instance=ExtResource("7_eow3j")]
+
+[node name="ball_spawn" type="Marker2D" parent="."]
+position = Vector2(480, 251)
+
+[node name="ReadyTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="AreaBounds" to="." method="_on_area_bounds_body_entered"]
+[connection signal="timeout" from="ReadyTimer" to="." method="_spawn_ball"]
