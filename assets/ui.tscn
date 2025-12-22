@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://lrtnxei0nkf5" path="res://assets/ui.gd" id="1_etwi0"]
 
 [sub_resource type="SystemFont" id="SystemFont_pnrih"]
+subpixel_positioning = 0
 
 [sub_resource type="Theme" id="Theme_etwi0"]
 default_font = SubResource("SystemFont_pnrih")
@@ -65,3 +66,50 @@ offset_left = 84.0
 offset_top = 64.0
 offset_right = 96.0
 offset_bottom = 76.0
+
+[node name="GameOverLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 182.0
+offset_right = 571.0
+offset_bottom = 231.0
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgainUI" type="Control" parent="GameOverLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 60.5
+offset_bottom = 60.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverLabel/PlayAgainUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.45
+anchor_top = 0.56200004
+anchor_right = 1.45
+anchor_bottom = 0.56200004
+offset_left = -48.0
+offset_top = -6.4800014
+offset_right = 48.0
+offset_bottom = 6.5199986
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayAgainBtn" type="Button" parent="GameOverLabel/PlayAgainUI/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Play Again"
+
+[node name="QuitBtn" type="Button" parent="GameOverLabel/PlayAgainUI/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Quit"

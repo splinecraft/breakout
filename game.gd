@@ -70,6 +70,6 @@ func _increment_score() -> void:
 func _on_area_bounds_body_entered(body: Node2D) -> void:
 	body.queue_free()
 	if ui.decrement_ball() < 0:
-		print("game over")
+		ui.ui_game_over()
 	else:
 		get_ready()

@@ -18,12 +18,15 @@ player = NodePath("Player")
 position = Vector2(481, 452)
 
 [node name="wall_top" parent="." instance=ExtResource("3_fc0e3")]
+script = null
 
 [node name="wall_left" parent="." instance=ExtResource("3_7jktm")]
 position = Vector2(12, 12)
+script = null
 
 [node name="wall_right" parent="." instance=ExtResource("3_7jktm")]
 position = Vector2(960, 12)
+script = null
 
 [node name="ScreenClampComponent" parent="." node_paths=PackedStringArray("node") instance=ExtResource("6_ryrav")]
 node = NodePath("../Player")
