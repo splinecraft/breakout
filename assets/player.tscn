@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b3cjy3kv8y13c" path="res://assets/player.gd" id="1_674bt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdrta"]
-size = Vector2(64, 16)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_674bt"]
+radius = 8.0
+height = 64.0
 
 [node name="Player" type="StaticBody2D" groups=["Player"]]
 script = ExtResource("1_674bt")
@@ -16,4 +17,5 @@ offset_bottom = 8.0
 color = Color(0.13333334, 0.003921569, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_fdrta")
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_674bt")

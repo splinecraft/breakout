@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal hit_brick
+@onready var particle_tail: CPUParticles2D = $ParticleTail
 
 var current_speed_modifier = 1.0
 
@@ -22,7 +23,7 @@ func _physics_process(delta: float) -> void:
 			_brick_collision(collider)
 		elif collider.is_in_group("Wall"):		
 			velocity.x = -velocity.x
-		
+	
 
 func _paddle_collision(collider, collision) -> void:
 	var paddle_center = collider.global_position.x

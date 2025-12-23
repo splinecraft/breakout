@@ -8,25 +8,22 @@
 [ext_resource type="PackedScene" uid="uid://wsuqh6nxst1j" path="res://assets/ui.tscn" id="7_eow3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryrav"]
-size = Vector2(935, 34)
+size = Vector2(935, 44)
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_80nbo")
 player = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(481, 452)
+position = Vector2(481, 487)
 
 [node name="wall_top" parent="." instance=ExtResource("3_fc0e3")]
-script = null
 
 [node name="wall_left" parent="." instance=ExtResource("3_7jktm")]
 position = Vector2(12, 12)
-script = null
 
 [node name="wall_right" parent="." instance=ExtResource("3_7jktm")]
 position = Vector2(960, 12)
-script = null
 
 [node name="ScreenClampComponent" parent="." node_paths=PackedStringArray("node") instance=ExtResource("6_ryrav")]
 node = NodePath("../Player")
@@ -40,7 +37,7 @@ position = Vector2(15, 65)
 position = Vector2(490, 549)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBounds"]
-position = Vector2(-10.5, 7)
+position = Vector2(-10.5, 2)
 shape = SubResource("RectangleShape2D_ryrav")
 
 [node name="UI" parent="." instance=ExtResource("7_eow3j")]

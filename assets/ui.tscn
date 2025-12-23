@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://wsuqh6nxst1j"]
+[gd_scene load_steps=5 format=3 uid="uid://wsuqh6nxst1j"]
 
 [ext_resource type="Script" uid="uid://lrtnxei0nkf5" path="res://assets/ui.gd" id="1_etwi0"]
+[ext_resource type="Texture2D" uid="uid://bl70p1hloo8y4" path="res://content/breakout_ball.png" id="2_ohefe"]
 
 [sub_resource type="SystemFont" id="SystemFont_pnrih"]
 subpixel_positioning = 0
@@ -28,9 +29,9 @@ script = ExtResource("1_etwi0")
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 17.0
-offset_top = 468.0
+offset_top = 1.0
 offset_right = 74.0
-offset_bottom = 537.0
+offset_bottom = 70.0
 text = "00"
 fit_content = true
 autowrap_mode = 0
@@ -41,9 +42,9 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 883.0
-offset_top = 468.0
+offset_top = 1.0
 offset_right = 940.0
-offset_bottom = 537.0
+offset_bottom = 70.0
 text = "03"
 fit_content = true
 autowrap_mode = 0
@@ -60,12 +61,14 @@ text = "Get Ready!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Ball" type="ColorRect" parent="ReadyLabel"]
+[node name="Ball" type="TextureRect" parent="ReadyLabel"]
 layout_mode = 0
-offset_left = 84.0
-offset_top = 64.0
-offset_right = 96.0
-offset_bottom = 76.0
+offset_left = 83.0
+offset_top = 63.0
+offset_right = 123.0
+offset_bottom = 103.0
+texture = ExtResource("2_ohefe")
+stretch_mode = 2
 
 [node name="GameOverLabel" type="Label" parent="."]
 layout_mode = 0
@@ -78,6 +81,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayAgainUI" type="Control" parent="GameOverLabel"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

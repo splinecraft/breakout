@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7fv1y4dq8sqd"]
+[gd_scene load_steps=4 format=3 uid="uid://b7fv1y4dq8sqd"]
 
 [ext_resource type="Script" uid="uid://b2jbxxwk820bc" path="res://assets/ball.gd" id="1_8kf32"]
+[ext_resource type="Texture2D" uid="uid://bl70p1hloo8y4" path="res://content/breakout_ball.png" id="2_f8axv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fvvy2"]
 radius = 7.071068
@@ -9,12 +10,22 @@ radius = 7.071068
 motion_mode = 1
 script = ExtResource("1_8kf32")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fvvy2")
 debug_color = Color(0.1254902, 0.8352941, 0, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_f8axv")
+
+[node name="ParticleTail" type="CPUParticles2D" parent="."]
+amount = 200
+lifetime = 0.17
+speed_scale = 0.34
+randomness = 0.68
+lifetime_randomness = 0.16
+emission_shape = 1
+emission_sphere_radius = 4.96
+direction = Vector2(0, 1)
+spread = 82.12
+gravity = Vector2(0, 0)
+scale_amount_max = 1.7
