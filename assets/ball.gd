@@ -1,16 +1,22 @@
 extends CharacterBody2D
 
 signal hit_brick
-@onready var particle_tail: CPUParticles2D = $ParticleTail
 
 var current_speed_modifier = 1.0
+var trail_queue: Array
+var trail_length: int
+
+@onready var trail: Line2D = %Trail
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var x_velocity = randf_range(25.0, 100.0) * sign(randf_range(-1.0, 1.0))
 	velocity = Vector2(x_velocity, 250)
+	trail_length = trail.max_length
 	
 func _physics_process(delta: float) -> void:
+	_trail()
 	var collision = move_and_collide(velocity * delta)
 	
 	if collision:
@@ -43,3 +49,12 @@ func _brick_collision(collider) -> void:
 		velocity *= collider.speed_modifier
 		current_speed_modifier = collider_speed_modifier
 	collider.queue_free()
+
+func _trail() -> void:
+	trail_queue.push_front(position)
+	if trail_queue.size() > trail_length:
+		trail_queue.pop_back()
+	trail.clear_points()
+	for point in trail_queue:
+		trail.add_point(point)
+	

@@ -9,6 +9,7 @@ extends Node2D
 @onready var ui: Control = $UI
 @onready var ready_timer: Timer = $ReadyTimer
 
+
 var brick_rows: int = 4
 var brick_col: int = 12
 var brick_col_spacing: int = 78
@@ -41,7 +42,7 @@ func _spawn_ball() -> void:
 		ui.ui_game_ip()
 	var ball_instance = ball.instantiate()
 	add_child(ball_instance)
-	ball_instance.position = ball_spawn.position
+	ball_instance.global_position = ball_spawn.position
 	ball_instance.hit_brick.connect(_increment_score)
 	
 	
