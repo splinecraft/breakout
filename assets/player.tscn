@@ -1,20 +1,82 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbhtcophbiqus"]
+[gd_scene load_steps=12 format=3 uid="uid://bbhtcophbiqus"]
 
 [ext_resource type="Script" uid="uid://b3cjy3kv8y13c" path="res://assets/player.gd" id="1_674bt"]
+[ext_resource type="Texture2D" uid="uid://cret8ttssswhy" path="res://content/paddle_impact.png" id="2_3mip4"]
+[ext_resource type="Texture2D" uid="uid://cr5im2rmbnrmf" path="res://content/paddle.png" id="3_insbl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_insbl"]
+atlas = ExtResource("2_3mip4")
+region = Rect2(0, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rug40"]
+atlas = ExtResource("2_3mip4")
+region = Rect2(64, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxi64"]
+atlas = ExtResource("2_3mip4")
+region = Rect2(128, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsdob"]
+atlas = ExtResource("2_3mip4")
+region = Rect2(192, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yceh7"]
+atlas = ExtResource("2_3mip4")
+region = Rect2(256, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uovkd"]
+atlas = ExtResource("2_3mip4")
+region = Rect2(320, 0, 64, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jeibo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_insbl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rug40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxi64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsdob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yceh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uovkd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_insbl")
+}],
+"loop": false,
+"name": &"impact",
+"speed": 20.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_674bt"]
-radius = 8.0
+radius = 7.0
 height = 64.0
 
 [node name="Player" type="StaticBody2D" groups=["Player"]]
 script = ExtResource("1_674bt")
 
-[node name="ColorRect" type="ColorRect" parent="." groups=["Player"]]
-offset_left = -32.0
-offset_top = -8.0
-offset_right = 32.0
-offset_bottom = 8.0
-color = Color(0.13333334, 0.003921569, 1, 1)
+[node name="SpriteAnim" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jeibo")
+animation = &"impact"
+autoplay = "default"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
 rotation = -1.5707964

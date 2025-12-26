@@ -44,6 +44,7 @@ func _spawn_ball() -> void:
 	add_child(ball_instance)
 	ball_instance.global_position = ball_spawn.position
 	ball_instance.hit_brick.connect(_increment_score)
+	ball_instance.connect("hit_paddle", Callable($Player, "_on_hit_paddle"))
 	
 	
 func _build_brick_grid() -> void:

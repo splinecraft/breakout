@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal hit_brick
+signal hit_paddle
 
 var current_speed_modifier = 1.0
 var trail_queue: Array
@@ -40,6 +41,7 @@ func _paddle_collision(collider, collision) -> void:
 	velocity.y = -abs(velocity.y)
 	velocity.x += distance_from_center * 5
 	velocity = velocity.normalized() * speed
+	emit_signal("hit_paddle")
 
 func _brick_collision(collider) -> void:
 	emit_signal("hit_brick")
