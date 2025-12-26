@@ -1,5 +1,7 @@
 extends Control
 
+signal win
+
 @onready var score_label: RichTextLabel = %ScoreLabel
 @onready var balls_remaining: RichTextLabel = %BallsRemaining
 @onready var ready_label: Label = $ReadyLabel
@@ -20,6 +22,8 @@ func _ready() -> void:
 func _score() -> void:
 	score += 1
 	score_label.text = str(score)
+	if score == 48:
+		emit_signal("win")
 	
 func decrement_ball() -> int:
 	balls -= 1
@@ -33,7 +37,11 @@ func ui_get_ready() -> void:
 func ui_game_ip() -> void:
 	ready_label.hide()
 	
-func ui_game_over() -> void:
+func ui_game_over(won_game) -> void:
+	if won_game:
+		game_over_label.text = "Well done!"
+	else:
+		game_over_label.text = "Game Over"
 	game_over_label.show()
 
 func restart() -> void:

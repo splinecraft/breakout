@@ -52,6 +52,7 @@ func _brick_collision(collider) -> void:
 		current_speed_modifier = collider_speed_modifier
 	collider.queue_free()
 
+
 func _trail() -> void:
 	trail_queue.push_front(position)
 	if trail_queue.size() > trail_length:

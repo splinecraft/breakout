@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3l3i5fah42d0"]
+[gd_scene load_steps=9 format=3 uid="uid://d3l3i5fah42d0"]
 
 [ext_resource type="Script" uid="uid://cfmai28x6aen6" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://bbhtcophbiqus" path="res://assets/player.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://dyibcgbf0v5lj" path="res://assets/space_background.tscn" id="2_eow3j"]
 [ext_resource type="PackedScene" uid="uid://c47wkghqo5dtm" path="res://assets/wall.tscn" id="3_7jktm"]
 [ext_resource type="PackedScene" uid="uid://bu2bsa28oyw6a" path="res://assets/ceiling.tscn" id="3_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://b7ejliwrxrgvq" path="res://components/screen_clamp_component.tscn" id="6_ryrav"]
@@ -13,6 +14,8 @@ size = Vector2(935, 44)
 [node name="Game" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_80nbo")
 player = NodePath("Player")
+
+[node name="SpaceBackground" parent="." instance=ExtResource("2_eow3j")]
 
 [node name="Player" parent="." instance=ExtResource("2_e2o6t")]
 position = Vector2(481, 487)

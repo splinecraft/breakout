@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbhtcophbiqus"]
+[gd_scene load_steps=8 format=3 uid="uid://bbhtcophbiqus"]
 
 [ext_resource type="Script" uid="uid://b3cjy3kv8y13c" path="res://assets/player.gd" id="1_674bt"]
 [ext_resource type="Texture2D" uid="uid://cret8ttssswhy" path="res://content/paddle_impact.png" id="2_3mip4"]
@@ -11,22 +11,6 @@ region = Rect2(0, 0, 64, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rug40"]
 atlas = ExtResource("2_3mip4")
 region = Rect2(64, 0, 64, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mxi64"]
-atlas = ExtResource("2_3mip4")
-region = Rect2(128, 0, 64, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nsdob"]
-atlas = ExtResource("2_3mip4")
-region = Rect2(192, 0, 64, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yceh7"]
-atlas = ExtResource("2_3mip4")
-region = Rect2(256, 0, 64, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uovkd"]
-atlas = ExtResource("2_3mip4")
-region = Rect2(320, 0, 64, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jeibo"]
 animations = [{
@@ -43,23 +27,11 @@ animations = [{
 "texture": SubResource("AtlasTexture_rug40")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mxi64")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nsdob")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yceh7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uovkd")
-}, {
-"duration": 1.0,
 "texture": ExtResource("3_insbl")
 }],
 "loop": false,
 "name": &"impact",
-"speed": 20.0
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_674bt"]
@@ -75,7 +47,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jeibo")
 animation = &"impact"
 autoplay = "default"
-frame = 5
+frame = 1
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]

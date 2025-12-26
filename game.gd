@@ -8,6 +8,7 @@ extends Node2D
 @onready var ball_spawn: Marker2D = $ball_spawn
 @onready var ui: Control = $UI
 @onready var ready_timer: Timer = $ReadyTimer
+@onready var area_bounds: Area2D = $AreaBounds
 
 
 var brick_rows: int = 4
@@ -29,6 +30,7 @@ var speed_modifiers:Array[float] = [1.4, 1.3, 1.2, 1.0]
 func _ready() -> void:
 	_build_brick_grid()
 	get_ready()
+	ui.connect("win", _on_win)
 	
 	
 func get_ready() -> void:
@@ -69,9 +71,14 @@ func _increment_score() -> void:
 		ui._score()
 
 
+func _on_win() -> void:
+	area_bounds.queue_free()
+	ui.ui_game_over(true)
+
+
 func _on_area_bounds_body_entered(body: Node2D) -> void:
 	body.queue_free()
 	if ui.decrement_ball() < 0:
-		ui.ui_game_over()
+		ui.ui_game_over(false)
 	else:
 		get_ready()
