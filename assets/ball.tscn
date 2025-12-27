@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7fv1y4dq8sqd"]
+[gd_scene load_steps=9 format=3 uid="uid://b7fv1y4dq8sqd"]
 
 [ext_resource type="Script" uid="uid://b2jbxxwk820bc" path="res://assets/ball.gd" id="1_8kf32"]
 [ext_resource type="Texture2D" uid="uid://bl70p1hloo8y4" path="res://content/breakout_ball.png" id="2_f8axv"]
 [ext_resource type="Script" uid="uid://dgorib7pv1o10" path="res://assets/trail.gd" id="3_l30l0"]
+[ext_resource type="AudioStream" uid="uid://bdhe0a2d64ahi" path="res://content/audio/square_low_f.ogg" id="4_l2l23"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fvvy2"]
 radius = 7.071068
@@ -13,6 +14,8 @@ point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_l30l0"]
 colors = PackedColorArray(1, 1, 1, 1, 0.500095, 0.50009507, 0.500095, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l2l23"]
 
 [node name="Ball" type="CharacterBody2D"]
 motion_mode = 1
@@ -34,3 +37,9 @@ default_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
 gradient = SubResource("Gradient_l30l0")
 script = ExtResource("3_l30l0")
 max_length = 14
+
+[node name="AudioHitPaddle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_l2l23")
+
+[node name="AudioHits" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_l2l23")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3l3i5fah42d0"]
+[gd_scene load_steps=10 format=3 uid="uid://d3l3i5fah42d0"]
 
 [ext_resource type="Script" uid="uid://cfmai28x6aen6" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://bbhtcophbiqus" path="res://assets/player.tscn" id="2_e2o6t"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bu2bsa28oyw6a" path="res://assets/ceiling.tscn" id="3_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://b7ejliwrxrgvq" path="res://components/screen_clamp_component.tscn" id="6_ryrav"]
 [ext_resource type="PackedScene" uid="uid://wsuqh6nxst1j" path="res://assets/ui.tscn" id="7_eow3j"]
+[ext_resource type="AudioStream" uid="uid://2d3o6f8gaqeo" path="res://content/audio/breakout_music.ogg" id="8_j5wjh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryrav"]
 size = Vector2(935, 44)
@@ -52,6 +53,9 @@ position = Vector2(480, 251)
 [node name="ReadyTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_j5wjh")
 
 [connection signal="body_entered" from="AreaBounds" to="." method="_on_area_bounds_body_entered"]
 [connection signal="timeout" from="ReadyTimer" to="." method="_spawn_ball"]

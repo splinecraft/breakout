@@ -9,6 +9,7 @@ extends Node2D
 @onready var ui: Control = $UI
 @onready var ready_timer: Timer = $ReadyTimer
 @onready var area_bounds: Area2D = $AreaBounds
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 var brick_rows: int = 4
@@ -31,6 +32,9 @@ func _ready() -> void:
 	_build_brick_grid()
 	get_ready()
 	ui.connect("win", _on_win)
+	audio_stream_player.play()
+	
+	
 	
 	
 func get_ready() -> void:
