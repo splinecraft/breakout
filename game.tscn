@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d3l3i5fah42d0"]
+[gd_scene load_steps=11 format=3 uid="uid://d3l3i5fah42d0"]
 
 [ext_resource type="Script" uid="uid://cfmai28x6aen6" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://bbhtcophbiqus" path="res://assets/player.tscn" id="2_e2o6t"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b7ejliwrxrgvq" path="res://components/screen_clamp_component.tscn" id="6_ryrav"]
 [ext_resource type="PackedScene" uid="uid://wsuqh6nxst1j" path="res://assets/ui.tscn" id="7_eow3j"]
 [ext_resource type="AudioStream" uid="uid://2d3o6f8gaqeo" path="res://content/audio/breakout_music.ogg" id="8_j5wjh"]
+[ext_resource type="AudioStream" uid="uid://dyxy6w2xlu3ch" path="res://content/audio/ball_missed.ogg" id="9_vef74"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryrav"]
 size = Vector2(935, 44)
@@ -35,7 +36,7 @@ margin = 44
 
 [node name="brick_spawn_start" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(15, 65)
+position = Vector2(50, 73)
 
 [node name="AreaBounds" type="Area2D" parent="."]
 position = Vector2(490, 549)
@@ -54,8 +55,12 @@ position = Vector2(480, 251)
 wait_time = 3.0
 one_shot = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_j5wjh")
+volume_db = 3.0
+
+[node name="AudioBallMissed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_vef74")
 
 [connection signal="body_entered" from="AreaBounds" to="." method="_on_area_bounds_body_entered"]
 [connection signal="timeout" from="ReadyTimer" to="." method="_spawn_ball"]

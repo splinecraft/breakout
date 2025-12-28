@@ -12,8 +12,6 @@ var trail_length: int
 @onready var audio_hits: AudioStreamPlayer2D = $AudioHits
 
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var x_velocity = randf_range(25.0, 100.0) * sign(randf_range(-1.0, 1.0))
 	velocity = Vector2(x_velocity, 250)
@@ -42,26 +40,21 @@ func _physics_process(delta: float) -> void:
 			velocity.y = -velocity.y
 			audio_hits.play()
 		elif collider.is_in_group("Brick"):
-			_brick_collision(collider)
+			_brick_collision(collider, collision)
 		elif collider.is_in_group("Wall"):		
 			velocity.x = -velocity.x
 			audio_hits.play()
 
+
 func _paddle_collision(collider, collision) -> void:
-	var paddle_center = collider.global_position.x
-	var ball_pos = collision.get_position().x
-	var distance_from_center = ball_pos - paddle_center
-	
-	var speed = velocity.length()
-	velocity.y = -abs(velocity.y)
-	velocity.x += distance_from_center * 5
-	velocity = velocity.normalized() * speed
+	velocity = _deflection_angle(collider, collision)
 	emit_signal("hit_paddle")
-	print("sound node is: ", audio_hit_paddle)
 	audio_hit_paddle.play()
 
-func _brick_collision(collider) -> void:
+
+func _brick_collision(collider, collision) -> void:
 	emit_signal("hit_brick")
+	velocity = _deflection_angle(collider, collision)
 	velocity.y = -velocity.y
 	var collider_speed_modifier = collider.speed_modifier
 	if collider_speed_modifier > current_speed_modifier:
@@ -69,6 +62,16 @@ func _brick_collision(collider) -> void:
 		current_speed_modifier = collider_speed_modifier
 	collider.queue_free()
 	audio_hits.play()
+
+
+func _deflection_angle(collider, collision) -> Vector2:
+	var center = collider.global_position.x
+	var ball_pos = collision.get_position().x
+	var distance_from_center = ball_pos - center
+	var speed = velocity.length()
+	velocity.y = -abs(velocity.y)
+	velocity.x += distance_from_center * 5
+	return velocity.normalized() * speed
 
 
 func _trail() -> void:

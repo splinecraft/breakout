@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://wsuqh6nxst1j"]
+[gd_scene load_steps=6 format=3 uid="uid://wsuqh6nxst1j"]
 
 [ext_resource type="Script" uid="uid://lrtnxei0nkf5" path="res://assets/ui.gd" id="1_etwi0"]
 [ext_resource type="Texture2D" uid="uid://bl70p1hloo8y4" path="res://content/breakout_ball.png" id="2_ohefe"]
+[ext_resource type="AudioStream" uid="uid://dut5osfu6tnv7" path="res://content/audio/win_condition.ogg" id="3_rvqgq"]
 
 [sub_resource type="SystemFont" id="SystemFont_pnrih"]
 subpixel_positioning = 0
@@ -116,3 +117,7 @@ text = "Play Again"
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Quit"
+
+[node name="AudioWin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rvqgq")
+volume_db = -9.0

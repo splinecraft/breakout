@@ -43,3 +43,4 @@ stream = ExtResource("4_l2l23")
 
 [node name="AudioHits" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_l2l23")
+volume_db = -6.0

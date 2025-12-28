@@ -8,6 +8,7 @@ signal win
 @onready var game_over_label: Label = $GameOverLabel
 @onready var play_again_btn: Button = $GameOverLabel/PlayAgainUI/HBoxContainer/PlayAgainBtn
 @onready var quit_btn: Button = $GameOverLabel/PlayAgainUI/HBoxContainer/QuitBtn
+@onready var audio_win: AudioStreamPlayer = $AudioWin
 
 var score: int = 0
 var balls: int = 3
@@ -30,22 +31,28 @@ func decrement_ball() -> int:
 	if balls >= 0:
 		balls_remaining.text = str(balls)
 	return balls
-	
+
+
 func ui_get_ready() -> void:
 	ready_label.show()
 
+
 func ui_game_ip() -> void:
 	ready_label.hide()
-	
+
+
 func ui_game_over(won_game) -> void:
 	if won_game:
 		game_over_label.text = "Well done!"
+		audio_win.play()
 	else:
 		game_over_label.text = "Game Over"
 	game_over_label.show()
 
+
 func restart() -> void:
 	get_tree().reload_current_scene()
-	
+
+
 func quit() -> void:
 	get_tree().quit()

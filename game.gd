@@ -9,8 +9,8 @@ extends Node2D
 @onready var ui: Control = $UI
 @onready var ready_timer: Timer = $ReadyTimer
 @onready var area_bounds: Area2D = $AreaBounds
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
+@onready var audio_ball_missed: AudioStreamPlayer = $AudioBallMissed
 
 var brick_rows: int = 4
 var brick_col: int = 12
@@ -32,9 +32,7 @@ func _ready() -> void:
 	_build_brick_grid()
 	get_ready()
 	ui.connect("win", _on_win)
-	audio_stream_player.play()
-	
-	
+	music_player.play()
 	
 	
 func get_ready() -> void:
@@ -81,6 +79,7 @@ func _on_win() -> void:
 
 
 func _on_area_bounds_body_entered(body: Node2D) -> void:
+	audio_ball_missed.play()
 	body.queue_free()
 	if ui.decrement_ball() < 0:
 		ui.ui_game_over(false)
